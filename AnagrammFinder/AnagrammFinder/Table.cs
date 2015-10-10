@@ -21,13 +21,13 @@ namespace AnagrammFinder
 
             try
             {
-                sr = new StreamReader(this.file_in_name, enc);
-                string line = "";
-                int sum = 1;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    foreach (char ch in line.ToLower())
-                    {
+                sr = new StreamReader(this.file_in_name, enc);  /* суть алгоритма в том, что каждое слово представляется */
+                string line = "";                               /* в виде произведения значений аски кодов его букв.     */
+                int sum = 1;                                    /* Было замечено, что для слов анаграмм произведение     */
+                while ((line = sr.ReadLine()) != null)          /* остается одинаковым. Таблица, которая выгружается в   */
+                {                                               /* файл, имеет ключ - это то самое произведение, а в ка- */
+                    foreach (char ch in line.ToLower())         /* честве значений - списки, элементы которых и есть     */
+                    {                                           /* слова анаграммы. */
                         sum *= (int)ch;
                     }
                     this.setValues(sum, line);
